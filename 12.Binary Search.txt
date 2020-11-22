@@ -1,0 +1,42 @@
+#include<stdio.h>
+void Binary_Search(int Arr[],int start,int end,int item)
+{
+    int mid=(start+end)/2;
+    if(Arr[mid]==item && start==end)
+    {
+        printf("Found\n");
+        return;
+    }
+     else if(start==end && Arr[mid]!=item)
+    {
+        printf("Not Found\n");
+        return;
+    }
+
+    else if(Arr[mid]<item)
+    {
+        Binary_Search(Arr,mid+1,end,item);
+    }
+    else if(Arr[mid]>item)
+    {
+        Binary_Search(Arr,start,mid-1,item);
+    }
+
+
+}
+int main()
+{
+    int Arr[100],n,start,end,i,mid=0;
+    printf("Enter how many integer you want to read:");
+    scanf("%d",&n);
+    printf("Enter the value:\n");
+    for(i=1;i<=n;i++)
+    {
+        scanf("%d",&Arr[i]);
+    }
+    int item;
+    printf("Search item:");
+    scanf("%d",&item);
+    Binary_Search(Arr,0,n,item);
+    return 0;
+}

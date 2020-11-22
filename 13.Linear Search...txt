@@ -1,0 +1,28 @@
+#include<stdio.h>
+int main()
+{
+    int a[100],n,i;
+    printf("Enter how many integer you want to read:");
+    scanf("%d",&n);
+    printf("Enter the value:\n");
+    for(i=1;i<=n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    int m,flag=0;
+    printf("Search value:");
+    scanf("%d",&m);
+    for(i=1;i<=n;i++)
+    {
+        if(m==a[i])
+        {
+            printf("Found\n");
+            flag=1;
+            break;
+        }
+    }
+    if(flag==0)
+    {
+        printf("Not Found\n");
+    }
+}

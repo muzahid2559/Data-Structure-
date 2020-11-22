@@ -1,0 +1,56 @@
+#include<stdio.h>
+struct node
+{
+    int id;
+    char name[100];
+    float CGPA;
+    struct node *next;
+}*head;
+void append()
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&temp->id);
+    scanf("%s",temp->name);
+    scanf("%f",&temp->CGPA);
+    temp->next=NULL;
+    if(head==NULL)
+    {
+        head=temp;
+    }
+    else
+    {
+        struct node *p;
+        p=head;
+        while(p->next!=NULL)
+        {
+            p=p->next;
+        }
+        p->next=temp;
+    }
+}
+void display()
+{
+    printf("ID\tNAME\tCGPA\n");
+    struct node *p;
+    p=head;
+    while(p!=NULL)
+    {
+        printf("%d\t%s\t%.2f\n ",p->id,p->name,p->CGPA);
+        p=p->next;
+    }
+    printf("\n");
+}
+int main()
+{
+    int i,n;
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+        append();
+    }
+    display();
+
+
+}
+

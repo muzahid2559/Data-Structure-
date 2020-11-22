@@ -1,0 +1,61 @@
+#include<stdio.h>
+struct node
+{
+    int data ;
+    struct node *next;
+};
+struct node *front=NULL;
+struct node *rear=NULL;
+void enquere()
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    int x;
+    scanf("%d",&x);
+    temp->data=x;
+    temp->next=NULL;
+    if(front==NULL && rear==NULL)
+    {
+        front=rear=temp;
+    }
+    rear->next=temp;
+    rear=temp;
+}
+void dequere()
+{
+     if(front==NULL && rear==NULL)
+   {
+       printf("this is Empty\n");
+   }
+   else
+   {
+        struct node* temp;
+        temp=front;
+        front=front->next;
+        free(temp);
+   }
+
+}
+void display()
+{
+    struct node *p;
+    p=front;
+    while(p!=NULL)
+    {
+        printf("%d ",p->data);
+        p=p->next;
+    }
+    printf("\n");
+}
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    for(i=1;i<=n;i++)
+    {
+        enquere();
+    }
+    display();
+    dequere();
+    display();
+}
